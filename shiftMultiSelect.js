@@ -1,11 +1,11 @@
- //Set all checkboxes to blank
- $(':checkbox').prop('checked', false)
+//Set all checkboxes to blank
+$(':checkbox').prop('checked', false)
 
- //Reset the studentArray to empty
- let studentArray = []
+//Reset the checkValArray to empty
+let checkValArray = []
 
- //Set the lastChecked box to null
- var lastChecked = null
+//Set the lastChecked box to null
+var lastChecked = null
 
 //Assign variables for checkboxes
 var $chkboxes = $('.checkRow')
@@ -14,7 +14,7 @@ var $masterCheck = $("input[name='checkboxMaster']")
 //When any check box is clicked
 $chkboxes.click(function(e) {
     //Reset the student array to be blank
-    studentArray = []
+    checkValArray = []
 
     //Set the last checkbox checked if it didnt exist before
     if (!lastChecked) {
@@ -45,7 +45,7 @@ $chkboxes.click(function(e) {
 
         //Add all values to the array that are selected
         if($(this).is(':checked')) {
-            studentArray.push($(this).val())
+            checkValArray.push($(this).val())
 
             //Make sure the multi-select functions are showing
             $('.multiSelectTools').show()
@@ -64,8 +64,8 @@ $chkboxes.click(function(e) {
         $masterCheck.prop('checked', true)
     }
 
-    //When the studentArray is emtpy, hide the multi-select functions
-    if (studentArray.length == 0){
+    //When the checkValArray is emtpy, hide the multi-select functions
+    if (checkValArray.length == 0){
         $('.multiSelectTools').hide()
     }
 
@@ -76,7 +76,7 @@ $chkboxes.click(function(e) {
 //When the master checkbox is selected:
 $masterCheck.click(function(){
     //Reset the student array to be blank
-    studentArray = []
+    checkValArray = []
 
     //Set all checkboxes state to the same as the master checkbox
     $(':checkbox').prop('checked', $masterCheck.is(':checked'))
@@ -86,21 +86,21 @@ $masterCheck.click(function(){
         $chkboxes.each(function() {
             //Add all values to the array
             if($(this).is(':checked')) {
-                studentArray.push($(this).val())
+                checkValArray.push($(this).val())
 
                 //Make sure the multi-select functions are showing
                 $('.multiSelectTools').show()
             }
         })
 
-        //When the studentArray is emtpy, hide the multi-select functions
-        if (studentArray.length == 0){
+        //When the checkValArray is emtpy, hide the multi-select functions
+        if (checkValArray.length == 0){
             $('.multiSelectTools').hide()
         }
 
     } else {
         //Reset the array
-        studentArray = []
+        checkValArray = []
         
         //Hide the multi-select functions
         $('.multiSelectTools').hide()
